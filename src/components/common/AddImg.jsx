@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useState } from 'react';
 
 const AddImg = ({ imgs, setImgs }) => {
     const [link, setLink] = useState('')

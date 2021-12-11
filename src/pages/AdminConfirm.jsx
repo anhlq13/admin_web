@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react';
 import SiderBar from '../components/common/SiderBar';
 import AdminLayout from '../layouts/AdminLayout';
 import { service } from '../services/service';

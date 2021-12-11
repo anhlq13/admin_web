@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react';
 import AddImg from '../components/common/AddImg';
 import SiderBar from '../components/common/SiderBar';
 import AdminLayout from '../layouts/AdminLayout';
@@ -7,21 +6,21 @@ import { service } from '../services/service';
 import { useHistory } from "react-router-dom";
 
 function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-}
+ }
 const AddTour = () => {
     const [check, setCheck] = useState(true)
     const [types, setTypes] = useState([])
     const [places, setPlaces] = useState([])
-
+    
     useEffect(() => {
-
+       
         Promise.all([
             service.getType(),
             service.getPlace()
@@ -61,10 +60,10 @@ const AddTour = () => {
     const [route_name3, setRoute_name3] = useState('')
 
     const submit = () => {
-        setCheck(true)
+        // setCheck(true)
         const data = {
             tour_id: tour_id,
-
+            
             tour_title,
             tour_bg_img: imgs[0] || '',
             tour_desc,
@@ -87,47 +86,47 @@ const AddTour = () => {
         }
 
         const route2 = {
-            step_number: step_number2,
-            route_desc: route_desc2,
-            route_name: route_name2
+            step_number:step_number2,
+            route_desc:route_desc2,
+            route_name:route_name2
         }
 
         const route3 = {
-            step_number: step_number3,
+            step_number:step_number3,
             route_desc: route_desc3,
-            route_name: route_name3
+            route_name:route_name3
         }
         console.log(data);
 
-        service.adminCreateTour(data).then((payload) => {
-            console.log(payload);
-            let reqs = []
-            imgs.forEach(item => {
-                const data = {
-                    link: item,
-                    name: ''
-                }
-                reqs.push(service.adminCreateImg(payload.tour_id, data))
-            })
-            Promise.all([
-                service.adminCreateRoute(payload.tour_id, route1),
-                service.adminCreateRoute(payload.tour_id, route2),
-                service.adminCreateRoute(payload.tour_id, route3),
-                ...reqs
-            ]).then((data) => {
-                setCheck(false)
-                return history.push('/admin')
+        // service.adminCreateTour(data).then((payload) => {
+        //     console.log(payload);
+        //     let reqs = []
+        //     imgs.forEach(item => {
+        //         const data = {
+        //             link: item,
+        //             name: ''
+        //         }
+        //         reqs.push(service.adminCreateImg(payload.tour_id, data))
+        //     })
+        //     Promise.all([
+        //         service.adminCreateRoute(payload.tour_id, route1),
+        //         service.adminCreateRoute(payload.tour_id, route2),
+        //         service.adminCreateRoute(payload.tour_id, route3),
+        //         ...reqs
+        //     ]).then((data) => {
+        //         setCheck(false)
+        //         return history.push('/admin')
 
 
-            }).catch(er => {
-                console.log(er);
-                setCheck(false)
+        //     }).catch(er => {
+        //         console.log(er);
+        //         setCheck(false)
 
-            })
-        }).catch(er => {
-            setCheck(false)
-            alert('kiểm tra đầy đủ lại thông tin')
-        })
+        //     })
+        // }).catch(er => {
+        //     setCheck(false)
+        //     alert('kiểm tra đầy đủ lại thông tin')
+        // })
     }
     return (
         <AdminLayout check={check}>
@@ -145,7 +144,7 @@ const AddTour = () => {
                                 <label htmlFor>Địa điểm</label>
                                 {/* <input type="text" name="tour-location" onChange={(event)=>setPlace_id(event.target.value)} /> */}
                                 <select name="tour-location" onChange={(event) => setPlace_id(event.target.value)} >
-                                    <option value="">Chọn</option>
+                                <option value="">Chọn</option>
 
                                     {
                                         places.map((value, key) => {

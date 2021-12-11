@@ -26,24 +26,16 @@ const TourLisst = () => {
     const router = useLocation()
     useEffect(() => {
         const parsed = queryString.parse(router.search);
-        const data = {
-            query: "",
-            type_id: params.id
-        }
-
         if (params.slug === 'type') {
             Promise.all([
                 service.getAllTour(),
-                //service.getTypeDetail(params.id)
-                service.getTypeDetailV2(data)
+                service.getTypeDetail(params.id)
             ]).then(payload => {
                 setCheck(false)
-                //setTours(payload[0].filter(tour => tour.type_id === params.id))
-                setTours(payload[1])
-                console.log(payload[1])
+                setTours(payload[0].filter(tour => tour.type_id === params.id))
                 setAlltour(payload[0])
                 setTitle(payload[1].type_name)
-                setBre(['Tour Yêu Thích', payload[1].type_name])
+                setBre([ 'Tour Yêu Thích', payload[1].type_name])
             })
         }
         if (params.slug === 'place') {
@@ -54,7 +46,7 @@ const TourLisst = () => {
                 setCheck(false)
                 setTours(payload[0].filter(tour => tour.place_id === params.id))
                 setAlltour(payload[0])
-                setTitle('Điểm đến ' + payload[1].place_name)
+                setTitle( 'Điểm đến ' + payload[1].place_name)
                 setBre(['Điểm đến', payload[1].place_name])
             })
         }
@@ -80,12 +72,12 @@ const TourLisst = () => {
                 })
                 setTours(data)
                 setAlltour(payload)
-                setTitle("Tìm Kiếm")
+                setTitle( "Tìm Kiếm")
                 setBre(["Tìm kiếm"])
 
             })
         }
-    }, [router.search])
+    },[router.search])
     return (
         <ClienLayout check={check}>
             <Bre bre={bre} />

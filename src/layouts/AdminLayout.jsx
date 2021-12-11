@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useEffect } from 'react';
 import { Header } from '../components/common';
 import Scroll from '../Scroll';
 import { User } from '../ultis/checkUser';

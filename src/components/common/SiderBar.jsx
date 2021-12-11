@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 
 const SiderBar = () => {
     return (
-        <div className="vertical-nav add-tour" style={{ height: '1906px' }} >
+        <div className="vertical-nav add-tour" style={{height:'1906px'}} >
             <ul className="nav-list">
-                {/* <li className="nav-item">
+                <li className="nav-item">
                     <div className="nav-item-heading">
                         <span>Quản trị</span>
                     </div>
-                </li> */}
+                </li>
                 <li className="nav-item">
                     <div className="nav-item-heading">
                         <span>Tours</span>
@@ -39,7 +39,7 @@ const SiderBar = () => {
                         </li>
                     </ul>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                     <div className="nav-item-heading">
                         <span>Người dùng</span>
                         <span><img src="./assets/images/landing/chevron-down_icon.png" alt /></span>
@@ -49,7 +49,7 @@ const SiderBar = () => {
                             <a href="#">Người dùng 1</a>
                         </li>
                     </ul>
-                </li> */}
+                </li>
             </ul>
         </div>
 

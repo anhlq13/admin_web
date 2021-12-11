@@ -1,8 +1,7 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react/cjs/react.development';
 import { service } from '../../services/service';
 import { imgs } from '../../ultis/randomImg';
 
